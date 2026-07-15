@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neuro Bridge Consulting — Building Better Behavioral Services Through Science</title>
+<meta name="description" content="Neuro Bridge Consulting helps clinics, schools, and healthcare organizations raise clinical, operational, and ethical standards in autism and neurodevelopment services through evidence-based consulting.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1E3D;
+    --navy-deep:#071527;
+    --ivory:#F7F4EF;
+    --ivory-2:#EFEAE1;
+    --teal:#1F7A73;
+    --teal-light:#2C948C;
+    --sage:#9CB6A3;
+    --gold:#C9A15A;
+    --ink:#1B2430;
+    --muted:#5B6472;
+    --line: rgba(11,30,61,0.12);
+    --radius: 4px;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    color:var(--navy);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px;height:1px;background:var(--teal);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  section{padding:120px 0;}
+  @media(max-width:720px){
+    section{padding:76px 0;}
+    .wrap{padding:0 22px;}
+  }
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(247,244,239,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .navrow{
+    max-width:var(--maxw);margin:0 auto;padding:18px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:24px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:var(--navy);
+    white-space:nowrap;
+  }
+  .logo svg{width:26px;height:26px;flex-shrink:0;}
+  nav.links{display:flex;gap:28px;flex-wrap:wrap;}
+  nav.links a{
+    font-size:14px;font-weight:500;color:var(--navy);text-decoration:none;
+    opacity:0.72;transition:opacity .2s;
+  }
+  nav.links a:hover{opacity:1;}
+  .navright{display:flex;align-items:center;gap:16px;}
+  select#langSwitch{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--navy);
+    padding:7px 10px;
+    border-radius:var(--radius);
+    cursor:pointer;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--navy);color:var(--ivory);
+    padding:12px 22px;border-radius:var(--radius);
+    font-size:14px;font-weight:600;text-decoration:none;
+    border:1px solid var(--navy);
+    transition:background .2s, color .2s;
+    white-space:nowrap;
+  }
+  .btn:hover{background:transparent;color:var(--navy);}
+  .btn-ghost{
+    background:transparent;color:var(--navy);border:1px solid var(--line);
+  }
+  .btn-ghost:hover{border-color:var(--navy);}
+  .btn-gold{border-color:var(--gold);}
+  @media(max-width:960px){
+    nav.links{display:none;}
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:150px 0 120px;
+    overflow:hidden;
+    background:linear-gradient(180deg,var(--ivory) 0%, var(--ivory) 60%, var(--ivory-2) 100%);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;align-items:center;
+    position:relative;z-index:2;
+  }
+  @media(max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{
+    font-size:clamp(34px,4.6vw,58px);
+    line-height:1.08;
+    margin-bottom:22px;
+  }
+  .hero p.sub{
+    font-size:18px;color:var(--muted);max-width:520px;margin-bottom:34px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .bridge-svg{width:100%;height:auto;display:block;}
+  .node{fill:var(--navy);}
+  .node.accent{fill:var(--teal);}
+  .node.gold{fill:var(--gold);}
+  .edge{stroke:var(--navy);stroke-width:1;opacity:0.28;}
+  .edge.pulse{stroke:var(--teal);opacity:0.6;stroke-dasharray:4 5;animation:dash 6s linear infinite;}
+  @keyframes dash{to{stroke-dashoffset:-90;}}
+  @media (prefers-reduced-motion: reduce){
+    .edge.pulse{animation:none;}
+  }
+
+  /* STATS */
+  .stats{
+    background:var(--navy);color:var(--ivory);
+    padding:64px 0;
+  }
+  .stats .wrap{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:32px;
+  }
+  @media(max-width:800px){ .stats .wrap{grid-template-columns:repeat(2,1fr);} }
+  .stat-num{
+    font-family:'Fraunces',serif;font-size:44px;color:var(--gold);
+  }
+  .stat-label{
+    font-size:13.5px;color:rgba(247,244,239,0.72);margin-top:8px;max-width:220px;
+  }
+
+  /* GENERIC SECTION HEAD */
+  .sec-head{max-width:680px;margin-bottom:56px;}
+  .sec-head h2{font-size:clamp(28px,3.4vw,40px);line-height:1.14;}
+  .sec-head p{color:var(--muted);font-size:16.5px;margin-top:16px;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .about-grid p{color:var(--muted);margin-bottom:18px;}
+  .values-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:14px;}
+  .values-list li{
+    display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink);
+  }
+  .values-list li::before{content:"—";color:var(--gold);font-weight:600;}
+  .miniblock{
+    border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;margin-bottom:18px;background:#fff;
+  }
+  .miniblock h4{font-size:15px;text-transform:uppercase;letter-spacing:0.06em;font-family:'IBM Plex Mono',monospace;color:var(--teal);margin-bottom:10px;font-weight:500;}
+  .miniblock p{color:var(--muted);margin:0;font-size:15px;}
+
+  /* WHY US */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:860px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{background:var(--ivory);padding:34px 30px;}
+  .why-card h4{font-size:17px;margin-bottom:10px;font-family:'Fraunces',serif;font-weight:500;}
+  .why-card p{color:var(--muted);font-size:14.5px;margin:0;}
+
+  /* SERVICES */
+  .svc-list{display:flex;flex-direction:column;border-top:1px solid var(--line);}
+  .svc-item{
+    border-bottom:1px solid var(--line);
+    padding:34px 0;
+    display:grid;grid-template-columns:60px 1.2fr 1.6fr;gap:28px;
+    cursor:pointer;
+  }
+  @media(max-width:860px){.svc-item{grid-template-columns:1fr;gap:10px;}}
+  .svc-num{font-family:'IBM Plex Mono',monospace;color:var(--gold);font-size:14px;padding-top:4px;}
+  .svc-title h3{font-size:22px;margin-bottom:6px;}
+  .svc-title span{font-size:13.5px;color:var(--teal);font-family:'IBM Plex Mono',monospace;}
+  .svc-body p{color:var(--muted);margin:0 0 14px;font-size:15px;}
+  .svc-bullets{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+  .svc-bullets li{font-size:14px;color:var(--ink);display:flex;gap:8px;}
+  .svc-bullets li::before{content:"·";color:var(--sage);font-weight:700;}
+
+  /* METHOD */
+  .method-list{display:grid;gap:0;border-top:1px solid var(--line);}
+  .method-item{
+    display:grid;grid-template-columns:90px 1fr;gap:24px;
+    padding:28px 0;border-bottom:1px solid var(--line);
+  }
+  @media(max-width:700px){.method-item{grid-template-columns:50px 1fr;}}
+  .method-num{font-family:'Fraunces',serif;font-size:34px;color:var(--sage);}
+  .method-item h4{font-size:18px;margin-bottom:6px;}
+  .method-item p{color:var(--muted);margin:0;font-size:15px;max-width:600px;}
+
+  /* CASE STUDIES */
+  .case-note{font-size:13px;color:var(--muted);font-style:italic;margin-top:-32px;margin-bottom:40px;}
+  .case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:900px){.case-grid{grid-template-columns:1fr;}}
+  .case-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px;
+  }
+  .case-card .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--teal);
+    text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;display:block;
+  }
+  .case-card h4{font-size:17px;margin-bottom:12px;}
+  .case-card p{font-size:14px;color:var(--muted);margin:0 0 10px;}
+  .case-card p b{color:var(--ink);font-weight:600;}
+
+  /* TESTIMONIALS */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+  .testi-card{
+    background:var(--navy);color:var(--ivory);border-radius:var(--radius);
+    padding:30px 26px;
+  }
+  .testi-card p.q{font-family:'Fraunces',serif;font-style:italic;font-size:17px;line-height:1.4;margin-bottom:18px;color:#F3EFE6;}
+  .testi-card p.role{font-size:13px;color:var(--gold);font-family:'IBM Plex Mono',monospace;margin:0;}
+
+  /* BLOG */
+  .blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 40px;}
+  @media(max-width:700px){.blog-grid{grid-template-columns:1fr;}}
+  .blog-item{
+    padding:14px 0;border-bottom:1px solid var(--line);
+    font-size:15px;display:flex;gap:12px;
+  }
+  .blog-item span.n{font-family:'IBM Plex Mono',monospace;color:var(--gold);font-size:13px;padding-top:2px;}
+
+  /* CONTACT */
+  .contact-wrap{
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  }
+  @media(max-width:860px){.contact-wrap{grid-template-columns:1fr;}}
+  .form-field{margin-bottom:18px;}
+  .form-field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-family:'IBM Plex Mono',monospace;}
+  .form-field input,.form-field textarea{
+    width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius);
+    font-family:'Inter',sans-serif;font-size:15px;background:#fff;color:var(--ink);
+  }
+  .form-field textarea{min-height:110px;resize:vertical;}
+  .channels{display:flex;flex-direction:column;gap:16px;margin-top:8px;}
+  .channel{
+    display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;font-size:14.5px;
+  }
+  .channel span.k{color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:12.5px;text-transform:uppercase;}
+
+  /* FINAL CTA */
+  .finalcta{
+    background:var(--navy);color:var(--ivory);text-align:center;padding:100px 0;
+  }
+  .finalcta h2{color:var(--ivory);font-size:clamp(26px,3.6vw,40px);max-width:700px;margin:0 auto 30px;}
+
+  footer{
+    background:var(--navy-deep);color:rgba(247,244,239,0.6);padding:40px 0;font-size:13px;
+  }
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+
+  .note-flag{
+    display:inline-block;background:rgba(201,161,90,0.15);color:var(--gold);
+    border:1px solid rgba(201,161,90,0.4);border-radius:var(--radius);
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;padding:3px 8px;margin-left:8px;
+    text-transform:uppercase;letter-spacing:0.04em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navrow">
+    <div class="logo">
+      <svg viewBox="0 0 26 26" fill="none"><circle cx="5" cy="13" r="3" class="node"/><circle cx="13" cy="6" r="2.2" class="node accent"/><circle cx="13" cy="20" r="2.2" class="node accent"/><circle cx="21" cy="13" r="3" class="node gold"/><path d="M8 13H18" stroke="#1F7A73" stroke-width="1.4"/><path d="M7 11L11 7" stroke="#0B1E3D" stroke-width="1.2"/><path d="M7 15L11 19" stroke="#0B1E3D" stroke-width="1.2"/><path d="M19 11L15 7" stroke="#0B1E3D" stroke-width="1.2"/><path d="M19 15L15 19" stroke="#0B1E3D" stroke-width="1.2"/></svg>
+      <span data-k="brandName">Neuro Bridge</span>
+    </div>
+    <nav class="links">
+      <a href="#about" data-k="nav.about">About</a>
+      <a href="#services" data-k="nav.services">Services</a>
+      <a href="#why" data-k="nav.why">Why Us</a>
+      <a href="#method" data-k="nav.method">Method</a>
+      <a href="#cases" data-k="nav.cases">Case Studies</a>
+      <a href="#blog" data-k="nav.blog">Blog</a>
+      <a href="#contact" data-k="nav.contact">Contact</a>
+    </nav>
+    <div class="navright">
+      <select id="langSwitch" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="pt">PT-BR</option>
+        <option value="es">ES</option>
+        <option value="no">NO</option>
+        <option value="nl">NL</option>
+      </select>
+      <a href="#contact" class="btn" data-k="nav.cta">Book a Consultation</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow" data-k="hero.eyebrow">International Behavioral Science Consulting</div>
+      <h1 data-k="hero.title">Building Better Behavioral Services Through Science.</h1>
+      <p class="sub" data-k="hero.subtitle">Neuro Bridge Consulting helps clinics, schools, and healthcare organizations raise the clinical, operational, and ethical standard of autism and neurodevelopment services.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn" data-k="hero.ctaPrimary">Book a Consultation</a>
+        <a href="#services" class="btn btn-ghost" data-k="hero.ctaSecondary">Explore Our Services</a>
+      </div>
+    </div>
+    <div>
+      <svg class="bridge-svg" viewBox="0 0 480 320" fill="none">
+        <circle cx="70" cy="230" r="6" class="node"/>
+        <circle cx="110" cy="180" r="5" class="node"/>
+        <circle cx="60" cy="150" r="4" class="node accent"/>
+        <circle cx="130" cy="240" r="4" class="node accent"/>
+        <circle cx="400" cy="230" r="6" class="node"/>
+        <circle cx="360" cy="180" r="5" class="node"/>
+        <circle cx="410" cy="150" r="4" class="node accent"/>
+        <circle cx="350" cy="240" r="4" class="node accent"/>
+        <circle cx="240" cy="90" r="7" class="node gold"/>
+        <line x1="70" y1="230" x2="110" y2="180" class="edge"/>
+        <line x1="110" y1="180" x2="60" y2="150" class="edge"/>
+        <line x1="70" y1="230" x2="130" y2="240" class="edge"/>
+        <line x1="400" y1="230" x2="360" y2="180" class="edge"/>
+        <line x1="360" y1="180" x2="410" y2="150" class="edge"/>
+        <line x1="400" y1="230" x2="350" y2="240" class="edge"/>
+        <path d="M110 180 C 170 100, 310 100, 360 180" class="edge pulse"/>
+        <path d="M60 150 C 140 40, 340 40, 410 150" class="edge pulse"/>
+        <line x1="240" y1="90" x2="110" y2="180" class="edge"/>
+        <line x1="240" y1="90" x2="360" y2="180" class="edge"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap" id="statsWrap"></div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-k="about.eyebrow">About Neuro Bridge</div>
+      <h2 data-k="about.title">A bridge between rigorous science and everyday clinical practice.</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p data-k="about.story">Founding story.</p>
+        <ul class="values-list" id="valuesList"></ul>
+      </div>
+      <div>
+        <div class="miniblock">
+          <h4 data-k="about.missionLabel">Mission</h4>
+          <p data-k="about.mission">Mission text.</p>
+        </div>
+        <div class="miniblock">
+          <h4 data-k="about.visionLabel">Vision</h4>
+          <p data-k="about.vision">Vision text.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" style="background:var(--ivory-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-k="why.eyebrow">Why Choose Us</div>
+      <h2 data-k="why.title">Six reasons organizations trust Neuro Bridge.</h2>
+    </div>
+  </div>
+  <div class="why-grid" id="whyGrid"></div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-k="services.eyebrow">Our Services</div>
+      <h2 data-k="services.title">One methodology, six disciplines.</h2>
+      <p data-k="services.subtitle">Every engagement draws on the same evidence base, adapted to your clinical and operational reality.</p>
+    </div>
+    <div class="svc-list" id="svcList"></div>
+  </div>
+</section>
+
+<section id="method" style="background:var(--ivory-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-k="method.eyebrow">Our Method</div>
+      <h2 data-k="method.title">From diagnosis to sustained practice.</h2>
+    </div>
+    <div class="method-list" id="methodList"></div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-k="cases.eyebrow">Case Studies</div>
+      <h2 data-k="cases.title">Representative engagement scenarios.</h2>
+    </div>
+    <p class="case-note" data-k="cases.note">Illustrative scenarios — replace with real client outcomes as engagements are published.</p>
+    <div class="case-grid" id="caseGrid"></div>
+  </div>
+</section>
+
+<section style="background:var(--ivory-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-k="testi.eyebrow">Testimonials</div>
+      <h2 data-k="testi.title">What partners say.</h2>
+    </div>
+    <p class="case-note" data-k="testi.note">Placeholder quotes — replace with real client testimonials.</p>
+    <div class="testi-grid" id="testiGrid"></div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-k="blog.eyebrow">Resources &amp; Blog</div>
+      <h2 data-k="blog.title">25 ideas, ready to write.</h2>
+      <p data-k="blog.subtitle">A starting editorial calendar spanning autism practice, ABA, clinical leadership, and healthcare innovation.</p>
+    </div>
+    <div class="blog-grid" id="blogGrid"></div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--ivory-2);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" data-k="contact.eyebrow">Get in Touch</div>
+      <h2 data-k="contact.title">Let's build better behavioral services, together.</h2>
+      <p data-k="contact.subtitle">Tell us about your organization. We'll follow up within two business days.</p>
+    </div>
+    <div class="contact-wrap">
+      <form onsubmit="return false;">
+        <div class="form-field"><label data-k="contact.form.name">Full name</label><input type="text"></div>
+        <div class="form-field"><label data-k="contact.form.email">Email</label><input type="email"></div>
+        <div class="form-field"><label data-k="contact.form.org">Organization</label><input type="text"></div>
+        <div class="form-field"><label data-k="contact.form.role">Your role</label><input type="text"></div>
+        <div class="form-field"><label data-k="contact.form.message">Tell us about your goals</label><textarea></textarea></div>
+        <button class="btn btn-gold" type="submit" data-k="contact.form.submit">Request a Consultation</button>
+      </form>
+      <div>
+        <div class="channels" id="channelsList"></div>
+        <p style="margin-top:24px;font-size:12.5px;color:var(--muted);"><span class="note-flag">placeholder</span> <span data-k="contact.channelsNote">Replace contact details with your real handles before launch.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="finalcta">
+  <div class="wrap">
+    <h2 data-k="finalcta.title">Ready to raise the standard of care?</h2>
+    <a href="#contact" class="btn btn-gold" data-k="finalcta.cta">Book a Consultation</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span data-k="footer.tagline">Building Better Behavioral Services Through Science.</span>
+    <span data-k="footer.rights">© 2026 Neuro Bridge Consulting. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+const CONTENT = {};
+</script>
+<script src="content.js"></script>
+<script>
+function get(obj, path){
+  return path.split('.').reduce((o,k)=>(o&&o[k]!==undefined)?o[k]:null, obj);
+}
+function render(lang){
+  const c = CONTENT[lang];
+  if(!c) return;
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+  document.querySelectorAll('[data-k]').forEach(el=>{
+    const val = get(c, el.getAttribute('data-k'));
+    if(typeof val === 'string') el.innerHTML = val;
+  });
+  // stats
+  document.getElementById('statsWrap').innerHTML = c.stats.map(s=>`
+    <div><div class="stat-num">${s.number}</div><div class="stat-label">${s.label}</div></div>
+  `).join('');
+  // values
+  document.getElementById('valuesList').innerHTML = c.about.values.map(v=>`<li>${v}</li>`).join('');
+  // why
+  document.getElementById('whyGrid').innerHTML = c.why.items.map(w=>`
+    <div class="why-card"><h4>${w.title}</h4><p>${w.desc}</p></div>
+  `).join('');
+  // services
+  document.getElementById('svcList').innerHTML = c.services.items.map((s,i)=>`
+    <div class="svc-item">
+      <div class="svc-num">0${i+1}</div>
+      <div class="svc-title"><h3>${s.name}</h3><span>${s.tagline}</span></div>
+      <div class="svc-body"><p>${s.desc}</p><ul class="svc-bullets">${s.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></div>
+    </div>
+  `).join('');
+  // method
+  document.getElementById('methodList').innerHTML = c.method.steps.map((m,i)=>`
+    <div class="method-item"><div class="method-num">0${i+1}</div><div><h4>${m.title}</h4><p>${m.desc}</p></div></div>
+  `).join('');
+  // cases
+  document.getElementById('caseGrid').innerHTML = c.cases.items.map(cs=>`
+    <div class="case-card">
+      <span class="tag">${cs.sector}</span>
+      <h4>${cs.headline}</h4>
+      <p><b>${c.cases.challengeLabel}:</b> ${cs.challenge}</p>
+      <p><b>${c.cases.resultLabel}:</b> ${cs.result}</p>
+    </div>
+  `).join('');
+  // testimonials
+  document.getElementById('testiGrid').innerHTML = c.testi.items.map(t=>`
+    <div class="testi-card"><p class="q">"${t.quote}"</p><p class="role">${t.role}</p></div>
+  `).join('');
+  // blog
+  document.getElementById('blogGrid').innerHTML = c.blog.posts.map((p,i)=>`
+    <div class="blog-item"><span class="n">${String(i+1).padStart(2,'0')}</span><span>${p}</span></div>
+  `).join('');
+  // channels
+  document.getElementById('channelsList').innerHTML = c.contact.channels.map(ch=>`
+    <div class="channel"><span class="k">${ch.k}</span><span>${ch.v}</span></div>
+  `).join('');
+  document.getElementById('langSwitch').value = lang;
+}
+document.getElementById('langSwitch').addEventListener('change', e=>render(e.target.value));
+render('en');
+</script>
+</body>
+</html>
